@@ -1,0 +1,427 @@
+
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+            <meta charset="UTF-8">
+            <title>Sumário Executivo - teste.com.br</title>
+            
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                line-height: 1.6;
+                color: #333;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+            }
+            
+            .container {
+                max-width: 1400px;
+                margin: 0 auto;
+                background: white;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                border-radius: 15px;
+                overflow: hidden;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .report-header {
+                background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+                color: white;
+                padding: 30px;
+                text-align: center;
+            }
+            
+            .header-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            
+            .domain-name {
+                color: #3498db;
+                font-weight: bold;
+            }
+            
+            .risk-badge {
+                padding: 15px 25px;
+                border-radius: 10px;
+                text-align: center;
+                min-width: 120px;
+            }
+            
+            .risk-badge.low { background: #27ae60; }
+            .risk-badge.medium { background: #f39c12; }
+            .risk-badge.high { background: #e74c3c; }
+            .risk-badge.critical { background: #8e44ad; }
+            
+            .metrics-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                padding: 30px;
+                background: #f8f9fa;
+            }
+            
+            .metric-card {
+                background: white;
+                padding: 25px;
+                border-radius: 12px;
+                text-align: center;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease;
+            }
+            
+            .metric-card:hover { transform: translateY(-5px); }
+            
+            .metric-card.critical { border-left: 5px solid #e74c3c; }
+            .metric-card.high { border-left: 5px solid #f39c12; }
+            
+            .metric-icon { font-size: 2em; margin-bottom: 10px; }
+            .metric-value { font-size: 2em; font-weight: bold; color: #2c3e50; }
+            .metric-label { color: #7f8c8d; font-size: 0.9em; margin-top: 5px; }
+            
+            .charts-section {
+                padding: 30px;
+                background: white;
+            }
+            
+            .charts-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+                margin-top: 20px;
+            }
+            
+            .chart-container {
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .tech-chart .tech-bar {
+                margin: 10px 0;
+            }
+            
+            .tech-name {
+                font-weight: bold;
+                margin-bottom: 5px;
+                color: #2c3e50;
+            }
+            
+            .tech-progress {
+                background: #ecf0f1;
+                border-radius: 20px;
+                overflow: hidden;
+                position: relative;
+                height: 25px;
+            }
+            
+            .tech-fill {
+                background: linear-gradient(90deg, #3498db, #2980b9);
+                height: 100%;
+                border-radius: 20px;
+                transition: width 0.5s ease;
+            }
+            
+            .tech-count {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-weight: bold;
+                color: #2c3e50;
+                font-size: 0.8em;
+            }
+            
+            .gauge-container {
+                background: #ecf0f1;
+                height: 40px;
+                border-radius: 20px;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .gauge-fill {
+                background: linear-gradient(90deg, #27ae60, #f39c12, #e74c3c);
+                height: 100%;
+                border-radius: 20px;
+                transition: width 0.8s ease;
+            }
+            
+            .gauge-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-weight: bold;
+                color: #2c3e50;
+            }
+            
+            section {
+                padding: 30px;
+                border-bottom: 1px solid #ecf0f1;
+            }
+            
+            h2 {
+                color: #2c3e50;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 3px solid #3498db;
+                display: inline-block;
+            }
+            
+            .table-container {
+                overflow-x: auto;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                border-radius: 10px;
+                margin-top: 20px;
+            }
+            
+            .data-table, .vuln-table {
+                width: 100%;
+                border-collapse: collapse;
+                background: white;
+            }
+            
+            .data-table th, .vuln-table th {
+                background: #34495e;
+                color: white;
+                padding: 15px 10px;
+                text-align: left;
+                font-weight: 600;
+            }
+            
+            .data-table td, .vuln-table td {
+                padding: 12px 10px;
+                border-bottom: 1px solid #ecf0f1;
+                vertical-align: top;
+            }
+            
+            .data-table tr:hover, .vuln-table tr:hover {
+                background: #f8f9fa;
+            }
+            
+            .data-table tr.high-risk { border-left: 4px solid #e74c3c; }
+            .data-table tr.medium-risk { border-left: 4px solid #f39c12; }
+            .data-table tr.low-risk { border-left: 4px solid #27ae60; }
+            
+            .url-link {
+                color: #3498db;
+                text-decoration: none;
+                font-weight: 500;
+            }
+            
+            .url-link:hover { text-decoration: underline; }
+            
+            .badge {
+                padding: 4px 8px;
+                border-radius: 12px;
+                font-size: 0.75em;
+                font-weight: bold;
+                text-transform: uppercase;
+                margin-left: 5px;
+            }
+            
+            .badge.login { background: #e74c3c; color: white; }
+            .badge.admin_panel { background: #8e44ad; color: white; }
+            .badge.sensitive_file { background: #f39c12; color: white; }
+            .badge.api_endpoint { background: #27ae60; color: white; }
+            
+            .risk-score {
+                background: #34495e;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 12px;
+                font-weight: bold;
+                font-size: 0.85em;
+            }
+            
+            .vuln-tag {
+                background: #e74c3c;
+                color: white;
+                padding: 2px 6px;
+                border-radius: 8px;
+                font-size: 0.7em;
+                margin-right: 5px;
+                display: inline-block;
+                margin-bottom: 2px;
+            }
+            
+            .severity-critical { background: #fdf2f2; border-left: 4px solid #e74c3c; }
+            .severity-high { background: #fef9f0; border-left: 4px solid #f39c12; }
+            .severity-medium { background: #f0f9ff; border-left: 4px solid #3498db; }
+            .severity-low { background: #f0fff4; border-left: 4px solid #27ae60; }
+            
+            .vulnerability-group {
+                margin-bottom: 30px;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .vulnerability-group h3 {
+                background: #34495e;
+                color: white;
+                padding: 15px 20px;
+                margin: 0;
+            }
+            
+            .description-cell, .evidence-cell, .remediation-cell {
+                max-width: 200px;
+                word-wrap: break-word;
+                font-size: 0.9em;
+            }
+            
+            .evidence-cell code {
+                background: #f8f9fa;
+                padding: 2px 4px;
+                border-radius: 4px;
+                font-size: 0.8em;
+            }
+            
+            .dork-result {
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                border-left: 4px solid #3498db;
+            }
+            
+            .dork-query {
+                background: #2c3e50;
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                margin: 10px 0;
+                font-family: 'Courier New', monospace;
+                word-break: break-all;
+            }
+            
+            .dork-links ul {
+                list-style: none;
+                padding: 0;
+            }
+            
+            .dork-links li {
+                padding: 5px 0;
+                border-bottom: 1px solid #ecf0f1;
+            }
+            
+            .recommendations-list {
+                list-style: none;
+                padding: 0;
+            }
+            
+            .recommendations-list li {
+                background: #f8f9fa;
+                padding: 15px 20px;
+                margin: 10px 0;
+                border-radius: 8px;
+                border-left: 4px solid #3498db;
+                transition: transform 0.2s ease;
+            }
+            
+            .recommendations-list li:hover {
+                transform: translateX(5px);
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .report-footer {
+                background: #2c3e50;
+                color: white;
+                padding: 30px;
+                text-align: center;
+            }
+            
+            .disclaimer {
+                margin-top: 15px;
+                font-size: 0.9em;
+                color: #bdc3c7;
+                font-style: italic;
+            }
+            
+            @media (max-width: 768px) {
+                .header-content { flex-direction: column; gap: 20px; }
+                .metrics-grid { grid-template-columns: 1fr 1fr; }
+                .charts-grid { grid-template-columns: 1fr; }
+                .container { margin: 10px; border-radius: 10px; }
+            }
+        </style>
+        
+        </head>
+        <body>
+            <div class="container">
+                <header class="report-header">
+                    <h1>📊 Sumário Executivo</h1>
+                    <h2>Análise de Segurança: teste.com.br</h2>
+                </header>
+                
+                
+        <section class="summary-section">
+            <h2>📊 Resumo Executivo</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">🌐</div>
+                    <div class="metric-value">1</div>
+                    <div class="metric-label">Subdomínios Descobertos</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">✅</div>
+                    <div class="metric-value">1</div>
+                    <div class="metric-label">Hosts Ativos</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">🔍</div>
+                    <div class="metric-value">6</div>
+                    <div class="metric-label">Achados Totais</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">🔐</div>
+                    <div class="metric-value">0</div>
+                    <div class="metric-label">Páginas de Login</div>
+                </div>
+                <div class="metric-card critical">
+                    <div class="metric-icon">🚨</div>
+                    <div class="metric-value">0</div>
+                    <div class="metric-label">Vulns Críticas</div>
+                </div>
+                <div class="metric-card high">
+                    <div class="metric-icon">⚠️</div>
+                    <div class="metric-value">0</div>
+                    <div class="metric-label">Vulns Alto Risco</div>
+                </div>
+            </div>
+        </section>
+        
+                
+                <section>
+                    <h2>🎯 Principais Riscos Identificados</h2>
+                    <p>✅ Nenhum risco crítico imediato identificado.</p>
+                </section>
+                
+                <section>
+                    <h2>💡 Recomendações Prioritárias</h2>
+                    <ul class='recommendations-list'><li>🎯 <strong>Ação Imediata:</strong> Corrigir vulnerabilidades críticas identificadas</li><li>🔒 <strong>Autenticação:</strong> Implementar autenticação multifator (MFA)</li><li>🛡️ <strong>WAF:</strong> Instalar Web Application Firewall</li><li>📊 <strong>Monitoramento:</strong> Implementar SOC/SIEM para detecção de ameaças</li><li>👥 <strong>Treinamento:</strong> Capacitar equipe em segurança cibernética</li><li>📋 <strong>Política:</strong> Estabelecer política de segurança da informação</li></ul>
+                </section>
+                
+                
+        <footer class="report-footer">
+            <div class="footer-content">
+                <p>Relatório gerado por <strong>Recon Pro v2.0</strong> | Pentester Caio | CHDEVSEC</p>
+                <p>Data de geração: 2025-07-24 15:37:01</p>
+                <p class="disclaimer">
+                    <strong>Disclaimer:</strong> Este relatório é destinado apenas para testes autorizados. 
+                    O uso indevido das informações contidas neste relatório é de responsabilidade do usuário.
+                </p>
+            </div>
+        </footer>
+        
+            </div>
+        </body>
+        </html>
+        

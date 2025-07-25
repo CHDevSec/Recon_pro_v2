@@ -1,0 +1,278 @@
+{
+  "domain": "teste.com.br",
+  "scan_type": "full",
+  "scan_duration": 373.9378981590271,
+  "timestamp": "2025-07-24T15:37:01.996433",
+  "subdomains": [
+    {
+      "url": "http://teste.com.br",
+      "subdomain": "teste.com.br",
+      "status": 403,
+      "ip": "45.152.44.81",
+      "tech": "LiteSpeed",
+      "title": "403 Forbidden",
+      "ssl_info": null,
+      "cdn": null,
+      "cloud_provider": null,
+      "login_detected": false,
+      "risk_score": 0.0
+    }
+  ],
+  "findings": [
+    {
+      "url": "http://teste.com.br/.htaccess",
+      "status_code": 403,
+      "content_length": 787,
+      "content_type": "text/html",
+      "category": "sensitive_file",
+      "headers": {
+        "Connection": "Keep-Alive",
+        "Keep-Alive": "timeout=5, max=100",
+        "cache-control": "private, no-cache, no-store, must-revalidate, max-age=0",
+        "pragma": "no-cache",
+        "content-type": "text/html",
+        "content-length": "787",
+        "date": "Thu, 24 Jul 2025 16:31:09 GMT",
+        "server": "LiteSpeed"
+      },
+      "vulnerabilities": [],
+      "risk_score": 6,
+      "response_sample": "<!DOCTYPE html>\n<html style=\"height:100%\">\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />\n<title> 403 Forbidden\r\n</title><style>@media (prefers-color-scheme:dark){body{background-color:#000!important}}</style></head>\n<body style=\"color: #444; margin:0;font: normal 14px/20px Arial, Helvetica, sans-serif; height:100%; background-color: #fff;\">\n<div style=\"height:auto; min-height:100%; \">     <div style=\"text-align: center; width:800px; margin-left: ",
+      "impact": "MÉDIO - Arquivo potencialmente sensível",
+      "recommendations": [
+        "Remover arquivo do servidor web",
+        "Configurar .htaccess para bloquear acesso",
+        "Mover arquivo para fora do document root",
+        "Implementar controle de acesso adequado"
+      ],
+      "source_host": "http://teste.com.br",
+      "host_tech": "generic"
+    },
+    {
+      "url": "http://teste.com.br/.htpasswd",
+      "status_code": 403,
+      "content_length": 787,
+      "content_type": "text/html",
+      "category": "sensitive_file",
+      "headers": {
+        "Connection": "Keep-Alive",
+        "Keep-Alive": "timeout=5, max=100",
+        "cache-control": "private, no-cache, no-store, must-revalidate, max-age=0",
+        "pragma": "no-cache",
+        "content-type": "text/html",
+        "content-length": "787",
+        "date": "Thu, 24 Jul 2025 16:31:09 GMT",
+        "server": "LiteSpeed"
+      },
+      "vulnerabilities": [],
+      "risk_score": 6,
+      "response_sample": "<!DOCTYPE html>\n<html style=\"height:100%\">\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />\n<title> 403 Forbidden\r\n</title><style>@media (prefers-color-scheme:dark){body{background-color:#000!important}}</style></head>\n<body style=\"color: #444; margin:0;font: normal 14px/20px Arial, Helvetica, sans-serif; height:100%; background-color: #fff;\">\n<div style=\"height:auto; min-height:100%; \">     <div style=\"text-align: center; width:800px; margin-left: ",
+      "impact": "MÉDIO - Arquivo potencialmente sensível",
+      "recommendations": [
+        "Remover arquivo do servidor web",
+        "Configurar .htaccess para bloquear acesso",
+        "Mover arquivo para fora do document root",
+        "Implementar controle de acesso adequado"
+      ],
+      "source_host": "http://teste.com.br",
+      "host_tech": "generic"
+    },
+    {
+      "url": "http://teste.com.br/.git/config",
+      "status_code": 403,
+      "content_length": 787,
+      "content_type": "text/html",
+      "category": "sensitive_file",
+      "headers": {
+        "Connection": "Keep-Alive",
+        "Keep-Alive": "timeout=5, max=100",
+        "cache-control": "private, no-cache, no-store, must-revalidate, max-age=0",
+        "pragma": "no-cache",
+        "content-type": "text/html",
+        "content-length": "787",
+        "date": "Thu, 24 Jul 2025 16:31:19 GMT",
+        "server": "LiteSpeed"
+      },
+      "vulnerabilities": [],
+      "risk_score": 6,
+      "response_sample": "<!DOCTYPE html>\n<html style=\"height:100%\">\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />\n<title> 403 Forbidden\r\n</title><style>@media (prefers-color-scheme:dark){body{background-color:#000!important}}</style></head>\n<body style=\"color: #444; margin:0;font: normal 14px/20px Arial, Helvetica, sans-serif; height:100%; background-color: #fff;\">\n<div style=\"height:auto; min-height:100%; \">     <div style=\"text-align: center; width:800px; margin-left: ",
+      "impact": "CRÍTICO - Arquivo altamente sensível exposto",
+      "recommendations": [
+        "Remover arquivo do servidor web",
+        "Configurar .htaccess para bloquear acesso",
+        "Mover arquivo para fora do document root",
+        "Implementar controle de acesso adequado"
+      ],
+      "source_host": "http://teste.com.br",
+      "host_tech": "generic"
+    },
+    {
+      "url": "http://teste.com.br/.git/HEAD",
+      "status_code": 403,
+      "content_length": 787,
+      "content_type": "text/html",
+      "category": "sensitive_file",
+      "headers": {
+        "Connection": "Keep-Alive",
+        "Keep-Alive": "timeout=5, max=100",
+        "cache-control": "private, no-cache, no-store, must-revalidate, max-age=0",
+        "pragma": "no-cache",
+        "content-type": "text/html",
+        "content-length": "787",
+        "date": "Thu, 24 Jul 2025 16:31:20 GMT",
+        "server": "LiteSpeed"
+      },
+      "vulnerabilities": [],
+      "risk_score": 6,
+      "response_sample": "<!DOCTYPE html>\n<html style=\"height:100%\">\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />\n<title> 403 Forbidden\r\n</title><style>@media (prefers-color-scheme:dark){body{background-color:#000!important}}</style></head>\n<body style=\"color: #444; margin:0;font: normal 14px/20px Arial, Helvetica, sans-serif; height:100%; background-color: #fff;\">\n<div style=\"height:auto; min-height:100%; \">     <div style=\"text-align: center; width:800px; margin-left: ",
+      "impact": "MÉDIO - Arquivo potencialmente sensível",
+      "recommendations": [
+        "Remover arquivo do servidor web",
+        "Configurar .htaccess para bloquear acesso",
+        "Mover arquivo para fora do document root",
+        "Implementar controle de acesso adequado"
+      ],
+      "source_host": "http://teste.com.br",
+      "host_tech": "generic"
+    },
+    {
+      "url": "http://teste.com.br/.svn/entries",
+      "status_code": 403,
+      "content_length": 787,
+      "content_type": "text/html",
+      "category": "sensitive_file",
+      "headers": {
+        "Connection": "Keep-Alive",
+        "Keep-Alive": "timeout=5, max=100",
+        "cache-control": "private, no-cache, no-store, must-revalidate, max-age=0",
+        "pragma": "no-cache",
+        "content-type": "text/html",
+        "content-length": "787",
+        "date": "Thu, 24 Jul 2025 16:31:20 GMT",
+        "server": "LiteSpeed"
+      },
+      "vulnerabilities": [],
+      "risk_score": 6,
+      "response_sample": "<!DOCTYPE html>\n<html style=\"height:100%\">\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />\n<title> 403 Forbidden\r\n</title><style>@media (prefers-color-scheme:dark){body{background-color:#000!important}}</style></head>\n<body style=\"color: #444; margin:0;font: normal 14px/20px Arial, Helvetica, sans-serif; height:100%; background-color: #fff;\">\n<div style=\"height:auto; min-height:100%; \">     <div style=\"text-align: center; width:800px; margin-left: ",
+      "impact": "MÉDIO - Arquivo potencialmente sensível",
+      "recommendations": [
+        "Remover arquivo do servidor web",
+        "Configurar .htaccess para bloquear acesso",
+        "Mover arquivo para fora do document root",
+        "Implementar controle de acesso adequado"
+      ],
+      "source_host": "http://teste.com.br",
+      "host_tech": "generic"
+    },
+    {
+      "url": "http://teste.com.br/.hg/hgrc",
+      "status_code": 403,
+      "content_length": 787,
+      "content_type": "text/html",
+      "category": "sensitive_file",
+      "headers": {
+        "Connection": "Keep-Alive",
+        "Keep-Alive": "timeout=5, max=100",
+        "cache-control": "private, no-cache, no-store, must-revalidate, max-age=0",
+        "pragma": "no-cache",
+        "content-type": "text/html",
+        "content-length": "787",
+        "date": "Thu, 24 Jul 2025 16:31:22 GMT",
+        "server": "LiteSpeed"
+      },
+      "vulnerabilities": [],
+      "risk_score": 6,
+      "response_sample": "<!DOCTYPE html>\n<html style=\"height:100%\">\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />\n<title> 403 Forbidden\r\n</title><style>@media (prefers-color-scheme:dark){body{background-color:#000!important}}</style></head>\n<body style=\"color: #444; margin:0;font: normal 14px/20px Arial, Helvetica, sans-serif; height:100%; background-color: #fff;\">\n<div style=\"height:auto; min-height:100%; \">     <div style=\"text-align: center; width:800px; margin-left: ",
+      "impact": "MÉDIO - Arquivo potencialmente sensível",
+      "recommendations": [
+        "Remover arquivo do servidor web",
+        "Configurar .htaccess para bloquear acesso",
+        "Mover arquivo para fora do document root",
+        "Implementar controle de acesso adequado"
+      ],
+      "source_host": "http://teste.com.br",
+      "host_tech": "generic"
+    }
+  ],
+  "vulnerabilities": [
+    {
+      "name": "Missing X-Frame-Options",
+      "category": "security_headers",
+      "severity": "low",
+      "confidence": 0.9,
+      "description": "Missing X-Frame-Options header",
+      "evidence": "Header X-Frame-Options not found in response",
+      "remediation": "Add X-Frame-Options: DENY or SAMEORIGIN",
+      "risk_score": 2.7
+    },
+    {
+      "name": "Missing X-Content-Type-Options",
+      "category": "security_headers",
+      "severity": "low",
+      "confidence": 0.9,
+      "description": "Missing X-Content-Type-Options header",
+      "evidence": "Header X-Content-Type-Options not found in response",
+      "remediation": "Add X-Content-Type-Options: nosniff",
+      "risk_score": 2.7
+    },
+    {
+      "name": "Missing X-XSS-Protection",
+      "category": "security_headers",
+      "severity": "low",
+      "confidence": 0.9,
+      "description": "Missing X-XSS-Protection header",
+      "evidence": "Header X-XSS-Protection not found in response",
+      "remediation": "Add X-XSS-Protection: 1; mode=block",
+      "risk_score": 2.7
+    },
+    {
+      "name": "Missing Strict-Transport-Security",
+      "category": "security_headers",
+      "severity": "medium",
+      "confidence": 0.9,
+      "description": "Missing HSTS header",
+      "evidence": "Header Strict-Transport-Security not found in response",
+      "remediation": "Add Strict-Transport-Security header for HTTPS",
+      "risk_score": 4.5
+    },
+    {
+      "name": "Missing Content-Security-Policy",
+      "category": "security_headers",
+      "severity": "medium",
+      "confidence": 0.9,
+      "description": "Missing Content Security Policy",
+      "evidence": "Header Content-Security-Policy not found in response",
+      "remediation": "Implement Content-Security-Policy header",
+      "risk_score": 4.5
+    }
+  ],
+  "dork_results": [
+    {
+      "dork": "site:teste.com.br inurl:admin OR inurl:login OR inurl:panel",
+      "category": "Security Research",
+      "links": []
+    },
+    {
+      "dork": "site:teste.com.br filetype:env OR filetype:sql OR filetype:log",
+      "category": "Security Research",
+      "links": []
+    },
+    {
+      "dork": "site:teste.com.br \"password\" OR \"secret\" OR \"api_key\"",
+      "category": "Security Research",
+      "links": []
+    },
+    {
+      "dork": "site:teste.com.br intitle:\"index of\" OR intitle:\"directory listing\"",
+      "category": "Security Research",
+      "links": []
+    }
+  ],
+  "scan_stats": {
+    "total_subdomains": 1,
+    "active_hosts": 1,
+    "total_findings": 6,
+    "vulnerabilities_found": 5,
+    "scan_duration_minutes": 6.23
+  }
+}

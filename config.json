@@ -1,0 +1,142 @@
+{
+  "threads": 25,
+  "timeout": 15,
+  "output_dir": "recon_results",
+  "rate_limit": 0.3,
+  
+  "api_keys": {
+    "SECURITYTRAILS": "YOUR_SECURITYTRAILS_API_KEY",
+    "SHODAN": "YOUR_SHODAN_API_KEY", 
+    "VIRUSTOTAL": "YOUR_VIRUSTOTAL_API_KEY",
+    "GOOGLE_API_KEY": "YOUR_GOOGLE_API_KEY",
+    "GOOGLE_CSE_ID": "YOUR_GOOGLE_CSE_ID",
+    "CENSYS_API_ID": "YOUR_CENSYS_API_ID",
+    "CENSYS_SECRET": "YOUR_CENSYS_SECRET",
+    "BING_API_KEY": "YOUR_BING_API_KEY"
+  },
+  
+  "user_agents": [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebP/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"
+  ],
+  
+  "common_subdomains": [
+    "www", "mail", "ftp", "webmail", "admin", "portal", "api", "test", "dev", 
+    "staging", "blog", "app", "mobile", "secure", "vpn", "crm", "shop", "cdn",
+    "login", "auth", "oauth", "sso", "m", "web", "static", "assets", "beta",
+    "support", "help", "docs", "forum", "community", "status", "monitor",
+    "dashboard", "panel", "control", "console", "backend", "internal", "private",
+    "old", "new", "v1", "v2", "api-v1", "api-v2", "demo", "sandbox", "preview",
+    "git", "svn", "jenkins", "docker", "k8s", "kubernetes", "prometheus", "grafana"
+  ],
+  
+  "proxies": [
+    "http://proxy1:8080",
+    "http://proxy2:8080"
+  ],
+  
+  "scan_profiles": {
+    "quick": {
+      "description": "Scan rápido focado em descoberta básica",
+      "discovery_sources": ["external_tools", "ct_logs"],
+      "fuzzing_enabled": false,
+      "vuln_analysis": "basic"
+    },
+    "full": {
+      "description": "Scan completo com todas as funcionalidades",
+      "discovery_sources": ["external_tools", "apis", "ct_logs", "dns_brute", "search_engines"],
+      "fuzzing_enabled": true,
+      "vuln_analysis": "comprehensive"
+    },
+    "deep": {
+      "description": "Scan profundo com análise intensiva",
+      "discovery_sources": ["external_tools", "apis", "ct_logs", "dns_brute", "search_engines"],
+      "fuzzing_enabled": true,
+      "vuln_analysis": "comprehensive",
+      "additional_wordlists": true,
+      "extended_payloads": true
+    }
+  },
+  
+  "reporting": {
+    "formats": ["html", "json", "csv", "executive"],
+    "include_screenshots": false,
+    "generate_charts": true,
+    "executive_summary": true
+  },
+  
+  "security": {
+    "verify_ssl": false,
+    "follow_redirects": true,
+    "max_redirects": 5,
+    "user_agent_rotation": true,
+    "rate_limit_respect": true
+  },
+  
+  "wordlists": {
+    "admin_paths": [
+      "/admin", "/administrator", "/admin.php", "/admin/", "/wp-admin/",
+      "/manager", "/management", "/control", "/controlpanel", "/panel",
+      "/dashboard", "/console", "/backend", "/backoffice", "/secure",
+      "/private", "/restricted", "/internal", "/staff", "/moderator"
+    ],
+    "sensitive_files": [
+      "/.env", "/.env.local", "/.env.production", "/.env.development",
+      "/config.php", "/configuration.php", "/settings.php", "/config.ini",
+      "/web.config", "/app.config", "/database.yml", "/secrets.yml",
+      "/.htaccess", "/.htpasswd", "/robots.txt", "/sitemap.xml",
+      "/backup.zip", "/backup.tar.gz", "/dump.sql", "/database.sql",
+      "/.git/config", "/.git/HEAD", "/.svn/entries", "/composer.json"
+    ],
+    "api_endpoints": [
+      "/api", "/api/v1", "/api/v2", "/api/v3", "/rest", "/restapi",
+      "/graphql", "/gql", "/ws", "/websocket", "/rpc", "/jsonrpc",
+      "/soap", "/wsdl", "/swagger", "/swagger-ui", "/docs", "/redoc"
+    ]
+  },
+  
+  "technology_detection": {
+    "header_analysis": true,
+    "content_analysis": true,
+    "cookie_analysis": true,
+    "error_page_analysis": true,
+    "response_time_analysis": false
+  },
+  
+  "vulnerability_checks": {
+    "xss": true,
+    "sql_injection": true,
+    "lfi": true,
+    "rfi": true,
+    "rce": true,
+    "ssti": true,
+    "xxe": true,
+    "nosql_injection": true,
+    "ldap_injection": true,
+    "xpath_injection": true,
+    "command_injection": true,
+    "info_disclosure": true,
+    "path_traversal": true,
+    "credential_exposure": true,
+    "cors_misconfiguration": true,
+    "security_headers": true
+  },
+  
+  "advanced_options": {
+    "custom_headers": {
+      "X-Forwarded-For": "127.0.0.1",
+      "X-Real-IP": "127.0.0.1"
+    },
+    "bypass_techniques": [
+      "header_injection",
+      "path_normalization", 
+      "case_variation",
+      "encoding_bypass"
+    ],
+    "stealth_mode": false,
+    "aggressive_mode": false
+  }
+} 

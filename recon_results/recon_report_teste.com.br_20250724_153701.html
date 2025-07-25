@@ -1,0 +1,807 @@
+
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Relatório de Reconhecimento - teste.com.br</title>
+            
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                line-height: 1.6;
+                color: #333;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+            }
+            
+            .container {
+                max-width: 1400px;
+                margin: 0 auto;
+                background: white;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                border-radius: 15px;
+                overflow: hidden;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .report-header {
+                background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+                color: white;
+                padding: 30px;
+                text-align: center;
+            }
+            
+            .header-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            
+            .domain-name {
+                color: #3498db;
+                font-weight: bold;
+            }
+            
+            .risk-badge {
+                padding: 15px 25px;
+                border-radius: 10px;
+                text-align: center;
+                min-width: 120px;
+            }
+            
+            .risk-badge.low { background: #27ae60; }
+            .risk-badge.medium { background: #f39c12; }
+            .risk-badge.high { background: #e74c3c; }
+            .risk-badge.critical { background: #8e44ad; }
+            
+            .metrics-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                padding: 30px;
+                background: #f8f9fa;
+            }
+            
+            .metric-card {
+                background: white;
+                padding: 25px;
+                border-radius: 12px;
+                text-align: center;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease;
+            }
+            
+            .metric-card:hover { transform: translateY(-5px); }
+            
+            .metric-card.critical { border-left: 5px solid #e74c3c; }
+            .metric-card.high { border-left: 5px solid #f39c12; }
+            
+            .metric-icon { font-size: 2em; margin-bottom: 10px; }
+            .metric-value { font-size: 2em; font-weight: bold; color: #2c3e50; }
+            .metric-label { color: #7f8c8d; font-size: 0.9em; margin-top: 5px; }
+            
+            .charts-section {
+                padding: 30px;
+                background: white;
+            }
+            
+            .charts-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+                margin-top: 20px;
+            }
+            
+            .chart-container {
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .tech-chart .tech-bar {
+                margin: 10px 0;
+            }
+            
+            .tech-name {
+                font-weight: bold;
+                margin-bottom: 5px;
+                color: #2c3e50;
+            }
+            
+            .tech-progress {
+                background: #ecf0f1;
+                border-radius: 20px;
+                overflow: hidden;
+                position: relative;
+                height: 25px;
+            }
+            
+            .tech-fill {
+                background: linear-gradient(90deg, #3498db, #2980b9);
+                height: 100%;
+                border-radius: 20px;
+                transition: width 0.5s ease;
+            }
+            
+            .tech-count {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-weight: bold;
+                color: #2c3e50;
+                font-size: 0.8em;
+            }
+            
+            .gauge-container {
+                background: #ecf0f1;
+                height: 40px;
+                border-radius: 20px;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .gauge-fill {
+                background: linear-gradient(90deg, #27ae60, #f39c12, #e74c3c);
+                height: 100%;
+                border-radius: 20px;
+                transition: width 0.8s ease;
+            }
+            
+            .gauge-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-weight: bold;
+                color: #2c3e50;
+            }
+            
+            section {
+                padding: 30px;
+                border-bottom: 1px solid #ecf0f1;
+            }
+            
+            h2 {
+                color: #2c3e50;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 3px solid #3498db;
+                display: inline-block;
+            }
+            
+            .table-container {
+                overflow-x: auto;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                border-radius: 10px;
+                margin-top: 20px;
+            }
+            
+            .data-table, .vuln-table {
+                width: 100%;
+                border-collapse: collapse;
+                background: white;
+            }
+            
+            .data-table th, .vuln-table th {
+                background: #34495e;
+                color: white;
+                padding: 15px 10px;
+                text-align: left;
+                font-weight: 600;
+            }
+            
+            .data-table td, .vuln-table td {
+                padding: 12px 10px;
+                border-bottom: 1px solid #ecf0f1;
+                vertical-align: top;
+            }
+            
+            .data-table tr:hover, .vuln-table tr:hover {
+                background: #f8f9fa;
+            }
+            
+            .data-table tr.high-risk { border-left: 4px solid #e74c3c; }
+            .data-table tr.medium-risk { border-left: 4px solid #f39c12; }
+            .data-table tr.low-risk { border-left: 4px solid #27ae60; }
+            
+            .url-link {
+                color: #3498db;
+                text-decoration: none;
+                font-weight: 500;
+            }
+            
+            .url-link:hover { text-decoration: underline; }
+            
+            .badge {
+                padding: 4px 8px;
+                border-radius: 12px;
+                font-size: 0.75em;
+                font-weight: bold;
+                text-transform: uppercase;
+                margin-left: 5px;
+            }
+            
+            .badge.login { background: #e74c3c; color: white; }
+            .badge.admin_panel { background: #8e44ad; color: white; }
+            .badge.sensitive_file { background: #f39c12; color: white; }
+            .badge.api_endpoint { background: #27ae60; color: white; }
+            
+            .risk-score {
+                background: #34495e;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 12px;
+                font-weight: bold;
+                font-size: 0.85em;
+            }
+            
+            .vuln-tag {
+                background: #e74c3c;
+                color: white;
+                padding: 2px 6px;
+                border-radius: 8px;
+                font-size: 0.7em;
+                margin-right: 5px;
+                display: inline-block;
+                margin-bottom: 2px;
+            }
+            
+            .severity-critical { background: #fdf2f2; border-left: 4px solid #e74c3c; }
+            .severity-high { background: #fef9f0; border-left: 4px solid #f39c12; }
+            .severity-medium { background: #f0f9ff; border-left: 4px solid #3498db; }
+            .severity-low { background: #f0fff4; border-left: 4px solid #27ae60; }
+            
+            .vulnerability-group {
+                margin-bottom: 30px;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .vulnerability-group h3 {
+                background: #34495e;
+                color: white;
+                padding: 15px 20px;
+                margin: 0;
+            }
+            
+            .description-cell, .evidence-cell, .remediation-cell {
+                max-width: 200px;
+                word-wrap: break-word;
+                font-size: 0.9em;
+            }
+            
+            .evidence-cell code {
+                background: #f8f9fa;
+                padding: 2px 4px;
+                border-radius: 4px;
+                font-size: 0.8em;
+            }
+            
+            .dork-result {
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                border-left: 4px solid #3498db;
+            }
+            
+            .dork-query {
+                background: #2c3e50;
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                margin: 10px 0;
+                font-family: 'Courier New', monospace;
+                word-break: break-all;
+            }
+            
+            .dork-links ul {
+                list-style: none;
+                padding: 0;
+            }
+            
+            .dork-links li {
+                padding: 5px 0;
+                border-bottom: 1px solid #ecf0f1;
+            }
+            
+            .recommendations-list {
+                list-style: none;
+                padding: 0;
+            }
+            
+            .recommendations-list li {
+                background: #f8f9fa;
+                padding: 15px 20px;
+                margin: 10px 0;
+                border-radius: 8px;
+                border-left: 4px solid #3498db;
+                transition: transform 0.2s ease;
+            }
+            
+            .recommendations-list li:hover {
+                transform: translateX(5px);
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .report-footer {
+                background: #2c3e50;
+                color: white;
+                padding: 30px;
+                text-align: center;
+            }
+            
+            .disclaimer {
+                margin-top: 15px;
+                font-size: 0.9em;
+                color: #bdc3c7;
+                font-style: italic;
+            }
+            
+            @media (max-width: 768px) {
+                .header-content { flex-direction: column; gap: 20px; }
+                .metrics-grid { grid-template-columns: 1fr 1fr; }
+                .charts-grid { grid-template-columns: 1fr; }
+                .container { margin: 10px; border-radius: 10px; }
+            }
+        </style>
+        
+            
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        </head>
+        <body>
+            <div class="container">
+                
+        <header class="report-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>🔍 Relatório de Reconhecimento Web</h1>
+                    <h2>Alvo: <span class="domain-name">teste.com.br</span></h2>
+                    <p class="scan-info">Scan realizado em: 2025-07-24 15:37:01</p>
+                </div>
+                <div class="header-right">
+                    <div class="risk-badge high">
+                        <div class="risk-level">ALTO</div>
+                        <div class="risk-score">6.0/10</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+                
+        <section class="summary-section">
+            <h2>📊 Resumo Executivo</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">🌐</div>
+                    <div class="metric-value">1</div>
+                    <div class="metric-label">Subdomínios Descobertos</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">✅</div>
+                    <div class="metric-value">1</div>
+                    <div class="metric-label">Hosts Ativos</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">🔍</div>
+                    <div class="metric-value">6</div>
+                    <div class="metric-label">Achados Totais</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">🔐</div>
+                    <div class="metric-value">0</div>
+                    <div class="metric-label">Páginas de Login</div>
+                </div>
+                <div class="metric-card critical">
+                    <div class="metric-icon">🚨</div>
+                    <div class="metric-value">0</div>
+                    <div class="metric-label">Vulns Críticas</div>
+                </div>
+                <div class="metric-card high">
+                    <div class="metric-icon">⚠️</div>
+                    <div class="metric-value">0</div>
+                    <div class="metric-label">Vulns Alto Risco</div>
+                </div>
+            </div>
+        </section>
+        
+                
+        <section class="charts-section">
+            <h2>📈 Análise Visual</h2>
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h3>Vulnerabilidades por Severidade</h3>
+                    <canvas id="severityChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Achados por Categoria</h3>
+                    <canvas id="categoryChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Top Tecnologias</h3>
+                    <div id="techChart" class="tech-chart">
+                        
+                <div class="tech-bar">
+                    <div class="tech-name">Litespeed</div>
+                    <div class="tech-progress">
+                        <div class="tech-fill" style="width: 100.0%"></div>
+                        <span class="tech-count">1</span>
+                    </div>
+                </div>
+            
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h3>Score de Risco</h3>
+                    <div class="risk-gauge">
+                        <div class="gauge-container">
+                            <div class="gauge-fill" style="width: 60.0%"></div>
+                            <div class="gauge-text">6.0/10</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+                
+        <section class="subdomains-section">
+            <h2>🌐 Subdomínios Descobertos (1)</h2>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>URL</th>
+                            <th>Status</th>
+                            <th>IP</th>
+                            <th>SSL</th>
+                            <th>Tecnologias</th>
+                            <th>Título</th>
+                            <th>Risk Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr class="low-risk">
+                    <td>
+                        <a href="http://teste.com.br" target="_blank" class="url-link">
+                            http://teste.com.br
+                        </a>
+                        
+                    </td>
+                    <td><span class="status-403">403</span></td>
+                    <td>45.152.44.81</td>
+                    <td>❌</td>
+                    <td><span class="tech-pills"><span class="tech-pill">LiteSpeed</span></span></td>
+                    <td class="title-cell">403 Forbidden...</td>
+                    <td><span class="risk-score">0.0</span></td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+                
+        <section class="findings-section">
+            <h2>🔍 Achados Sensíveis (6)</h2>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>URL</th>
+                            <th>Categoria</th>
+                            <th>Status</th>
+                            <th>Tamanho</th>
+                            <th>Tecnologias/Vulnerabilidades</th>
+                            <th>Risk Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr class="medium-risk">
+                    <td>
+                        <a href="http://teste.com.br/.htaccess" target="_blank" class="url-link">
+                            http://teste.com.br/.htaccess
+                        </a>
+                        
+                    </td>
+                    <td><span class="badge sensitive_file">Sensitive File</span></td>
+                    <td><span class="status-403">403</span></td>
+                    <td>787 bytes</td>
+                    <td>N/A</td>
+                    <td><span class="risk-score">6</span></td>
+                </tr>
+            
+                <tr class="medium-risk">
+                    <td>
+                        <a href="http://teste.com.br/.htpasswd" target="_blank" class="url-link">
+                            http://teste.com.br/.htpasswd
+                        </a>
+                        
+                    </td>
+                    <td><span class="badge sensitive_file">Sensitive File</span></td>
+                    <td><span class="status-403">403</span></td>
+                    <td>787 bytes</td>
+                    <td>N/A</td>
+                    <td><span class="risk-score">6</span></td>
+                </tr>
+            
+                <tr class="medium-risk">
+                    <td>
+                        <a href="http://teste.com.br/.git/config" target="_blank" class="url-link">
+                            http://teste.com.br/.git/config
+                        </a>
+                        
+                    </td>
+                    <td><span class="badge sensitive_file">Sensitive File</span></td>
+                    <td><span class="status-403">403</span></td>
+                    <td>787 bytes</td>
+                    <td>N/A</td>
+                    <td><span class="risk-score">6</span></td>
+                </tr>
+            
+                <tr class="medium-risk">
+                    <td>
+                        <a href="http://teste.com.br/.git/HEAD" target="_blank" class="url-link">
+                            http://teste.com.br/.git/HEAD
+                        </a>
+                        
+                    </td>
+                    <td><span class="badge sensitive_file">Sensitive File</span></td>
+                    <td><span class="status-403">403</span></td>
+                    <td>787 bytes</td>
+                    <td>N/A</td>
+                    <td><span class="risk-score">6</span></td>
+                </tr>
+            
+                <tr class="medium-risk">
+                    <td>
+                        <a href="http://teste.com.br/.svn/entries" target="_blank" class="url-link">
+                            http://teste.com.br/.svn/entries
+                        </a>
+                        
+                    </td>
+                    <td><span class="badge sensitive_file">Sensitive File</span></td>
+                    <td><span class="status-403">403</span></td>
+                    <td>787 bytes</td>
+                    <td>N/A</td>
+                    <td><span class="risk-score">6</span></td>
+                </tr>
+            
+                <tr class="medium-risk">
+                    <td>
+                        <a href="http://teste.com.br/.hg/hgrc" target="_blank" class="url-link">
+                            http://teste.com.br/.hg/hgrc
+                        </a>
+                        
+                    </td>
+                    <td><span class="badge sensitive_file">Sensitive File</span></td>
+                    <td><span class="status-403">403</span></td>
+                    <td>787 bytes</td>
+                    <td>N/A</td>
+                    <td><span class="risk-score">6</span></td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+                
+        <section class="vulnerabilities-section">
+            <h2>🛡️ Vulnerabilidades Detectadas (5)</h2>
+            
+                <div class="vulnerability-group">
+                    <h3>🔶 Medium (2)</h3>
+                    <table class="vuln-table">
+                        <thead>
+                            <tr>
+                                <th>Vulnerabilidade</th>
+                                <th>Categoria</th>
+                                <th>Confiança</th>
+                                <th>Descrição</th>
+                                <th>Evidência</th>
+                                <th>Remediação</th>
+                                <th>Risk Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                    <tr class="severity-medium">
+                        <td><strong>Missing Strict-Transport-Security</strong></td>
+                        <td>security_headers</td>
+                        <td><span class="confidence">0.9</span></td>
+                        <td class="description-cell">Missing HSTS header</td>
+                        <td class="evidence-cell"><code>Header Strict-Transport-Security not found in response...</code></td>
+                        <td class="remediation-cell">Add Strict-Transport-Security header for HTTPS</td>
+                        <td><span class="risk-score">4.5</span></td>
+                    </tr>
+                
+                    <tr class="severity-medium">
+                        <td><strong>Missing Content-Security-Policy</strong></td>
+                        <td>security_headers</td>
+                        <td><span class="confidence">0.9</span></td>
+                        <td class="description-cell">Missing Content Security Policy</td>
+                        <td class="evidence-cell"><code>Header Content-Security-Policy not found in response...</code></td>
+                        <td class="remediation-cell">Implement Content-Security-Policy header</td>
+                        <td><span class="risk-score">4.5</span></td>
+                    </tr>
+                
+                        </tbody>
+                    </table>
+                </div>
+            
+                <div class="vulnerability-group">
+                    <h3>🔸 Low (3)</h3>
+                    <table class="vuln-table">
+                        <thead>
+                            <tr>
+                                <th>Vulnerabilidade</th>
+                                <th>Categoria</th>
+                                <th>Confiança</th>
+                                <th>Descrição</th>
+                                <th>Evidência</th>
+                                <th>Remediação</th>
+                                <th>Risk Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                    <tr class="severity-low">
+                        <td><strong>Missing X-Frame-Options</strong></td>
+                        <td>security_headers</td>
+                        <td><span class="confidence">0.9</span></td>
+                        <td class="description-cell">Missing X-Frame-Options header</td>
+                        <td class="evidence-cell"><code>Header X-Frame-Options not found in response...</code></td>
+                        <td class="remediation-cell">Add X-Frame-Options: DENY or SAMEORIGIN</td>
+                        <td><span class="risk-score">2.7</span></td>
+                    </tr>
+                
+                    <tr class="severity-low">
+                        <td><strong>Missing X-Content-Type-Options</strong></td>
+                        <td>security_headers</td>
+                        <td><span class="confidence">0.9</span></td>
+                        <td class="description-cell">Missing X-Content-Type-Options header</td>
+                        <td class="evidence-cell"><code>Header X-Content-Type-Options not found in response...</code></td>
+                        <td class="remediation-cell">Add X-Content-Type-Options: nosniff</td>
+                        <td><span class="risk-score">2.7</span></td>
+                    </tr>
+                
+                    <tr class="severity-low">
+                        <td><strong>Missing X-XSS-Protection</strong></td>
+                        <td>security_headers</td>
+                        <td><span class="confidence">0.9</span></td>
+                        <td class="description-cell">Missing X-XSS-Protection header</td>
+                        <td class="evidence-cell"><code>Header X-XSS-Protection not found in response...</code></td>
+                        <td class="remediation-cell">Add X-XSS-Protection: 1; mode=block</td>
+                        <td><span class="risk-score">2.7</span></td>
+                    </tr>
+                
+                        </tbody>
+                    </table>
+                </div>
+            
+        </section>
+        
+                
+        <section class="dorks-section">
+            <h2>🔍 Google Dorks (4)</h2>
+            
+                <div class="dork-result">
+                    <h3>Security Research</h3>
+                    <div class="dork-query"><code>site:teste.com.br inurl:admin OR inurl:login OR inurl:panel</code></div>
+                    <div class="dork-links">
+                        <ul></ul>
+                    </div>
+                </div>
+            
+                <div class="dork-result">
+                    <h3>Security Research</h3>
+                    <div class="dork-query"><code>site:teste.com.br filetype:env OR filetype:sql OR filetype:log</code></div>
+                    <div class="dork-links">
+                        <ul></ul>
+                    </div>
+                </div>
+            
+                <div class="dork-result">
+                    <h3>Security Research</h3>
+                    <div class="dork-query"><code>site:teste.com.br "password" OR "secret" OR "api_key"</code></div>
+                    <div class="dork-links">
+                        <ul></ul>
+                    </div>
+                </div>
+            
+                <div class="dork-result">
+                    <h3>Security Research</h3>
+                    <div class="dork-query"><code>site:teste.com.br intitle:"index of" OR intitle:"directory listing"</code></div>
+                    <div class="dork-links">
+                        <ul></ul>
+                    </div>
+                </div>
+            
+        </section>
+        
+                
+        <section class="recommendations-section">
+            <h2>💡 Recomendações de Segurança</h2>
+            <ul class="recommendations-list">
+                <li>🔍 Implementar monitoramento contínuo de segurança</li><li>📋 Realizar auditorias de segurança regulares</li><li>🚀 Implementar Web Application Firewall (WAF)</li><li>📚 Treinar equipe em práticas de segurança</li><li>🔄 Estabelecer processo de resposta a incidentes</li><li>📊 Implementar logging e monitoramento abrangente</li>
+            </ul>
+        </section>
+        
+                
+        <footer class="report-footer">
+            <div class="footer-content">
+                <p>Relatório gerado por <strong>Recon Pro v2.0</strong> | Pentester Caio | CHDEVSEC</p>
+                <p>Data de geração: 2025-07-24 15:37:01</p>
+                <p class="disclaimer">
+                    <strong>Disclaimer:</strong> Este relatório é destinado apenas para testes autorizados. 
+                    O uso indevido das informações contidas neste relatório é de responsabilidade do usuário.
+                </p>
+            </div>
+        </footer>
+        
+            </div>
+            
+        <script>
+            // Gráfico de Vulnerabilidades por Severidade
+            const severityCtx = document.getElementById('severityChart');
+            if (severityCtx) {
+                new Chart(severityCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['low', 'medium'],
+                        datasets: [{
+                            data: [3, 2],
+                            backgroundColor: [
+                                '#e74c3c', '#f39c12', '#3498db', '#27ae60', '#95a5a6'
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { position: 'bottom' }
+                        }
+                    }
+                });
+            }
+            
+            // Gráfico de Achados por Categoria
+            const categoryCtx = document.getElementById('categoryChart');
+            if (categoryCtx) {
+                new Chart(categoryCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['sensitive_file'],
+                        datasets: [{
+                            label: 'Achados',
+                            data: [6],
+                            backgroundColor: '#3498db'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            y: { beginAtZero: true }
+                        }
+                    }
+                });
+            }
+        </script>
+        
+        </body>
+        </html>
+        

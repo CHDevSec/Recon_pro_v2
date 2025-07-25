@@ -1,0 +1,7 @@
+url,category,status_code,risk_score,vulnerabilities,tech
+http://teste.com.br/.htaccess,sensitive_file,403,6,,
+http://teste.com.br/.htpasswd,sensitive_file,403,6,,
+http://teste.com.br/.git/config,sensitive_file,403,6,,
+http://teste.com.br/.git/HEAD,sensitive_file,403,6,,
+http://teste.com.br/.svn/entries,sensitive_file,403,6,,
+http://teste.com.br/.hg/hgrc,sensitive_file,403,6,,
