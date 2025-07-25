@@ -7,70 +7,70 @@
 ![License](https://img.shields.io/badge/license-MIT-orange)
 ![Status](https://img.shields.io/badge/status-Professional-success)
 
-**Ferramenta Profissional de Reconhecimento Web**
+**Professional Web Reconnaissance Tool**
 
 *Developed by Pentester Caio | CHDEVSEC*
 
 </div>
 
-## 📋 Índice
+## 📋 Table of Contents
 
-- [Visão Geral](#-visão-geral)
-- [Características](#-características)
-- [Arquitetura Modular](#-arquitetura-modular)
-- [Instalação](#-instalação)
-- [Configuração](#-configuração)
-- [Uso](#-uso)
-- [Exemplos](#-exemplos)
-- [Relatórios](#-relatórios)
-- [APIs Suportadas](#-apis-suportadas)
-- [Contribuição](#-contribuição)
+- [Overview](#-overview)
+- [Features](#-features)
+- [Modular Architecture](#-modular-architecture)
+- [Installation](#-installation)
+- [Configuration](#-configuration)
+- [Usage](#-usage)
+- [Examples](#-examples)
+- [Reports](#-reports)
+- [Supported APIs](#-supported-apis)
+- [Contributing](#-contributing)
 - [Disclaimer](#-disclaimer)
 
-## 🎯 Visão Geral
+## 🎯 Overview
 
-O **Recon Pro v2.0** é uma ferramenta profissional de reconhecimento web completamente redesenhada com arquitetura modular, focada em descoberta de assets, fuzzing avançado, detecção de vulnerabilidades e geração de relatórios executivos.
+**Recon Pro v2.0** is a professional web reconnaissance tool completely redesigned with modular architecture, focused on asset discovery, advanced fuzzing, vulnerability detection, and executive report generation.
 
-### 🚀 Principais Melhorias v2.0
+### 🚀 Key Improvements v2.0
 
-- **Arquitetura Modular**: Código organizado em módulos especializados
-- **Descoberta Avançada**: Múltiplas fontes de intelligence (APIs, CT logs, ferramentas externas)
-- **Fuzzing Inteligente**: Payloads específicos por tecnologia
-- **Engine de Vulnerabilidades**: Detecção automática de 15+ tipos de vulnerabilidades
-- **Relatórios Profissionais**: HTML, JSON, CSV e sumário executivo
-- **Configuração Flexível**: Sistema de configuração JSON completo
+- **Modular Architecture**: Code organized in specialized modules
+- **Advanced Discovery**: Multiple intelligence sources (APIs, CT logs, external tools)
+- **Intelligent Fuzzing**: Technology-specific payloads
+- **Vulnerability Engine**: Automatic detection of 15+ vulnerability types
+- **Professional Reports**: HTML, JSON, CSV and executive summary
+- **Flexible Configuration**: Complete JSON configuration system
 
-## ✨ Características
+## ✨ Features
 
-### 🔍 Descoberta de Assets
-- **Ferramentas Externas**: Subfinder, Assetfinder, Amass, Findomain, Chaos
-- **APIs Premium**: SecurityTrails, Shodan, VirusTotal, Censys
+### 🔍 Asset Discovery
+- **External Tools**: Subfinder, Assetfinder, Amass, Findomain, Chaos
+- **Premium APIs**: SecurityTrails, Shodan, VirusTotal, Censys
 - **Certificate Transparency**: crt.sh, Certspotter
-- **DNS Bruteforce**: Wordlists otimizadas + DNS inteligente
-- **Motores de Busca**: Google, Bing (com APIs oficiais)
+- **DNS Bruteforce**: Optimized wordlists + intelligent DNS
+- **Search Engines**: Google, Bing (with official APIs)
 
-### 🎯 Fuzzing Avançado
-- **Painéis Administrativos**: 50+ paths comuns
-- **Arquivos Sensíveis**: .env, configs, backups, logs
-- **Endpoints API**: REST, GraphQL, SOAP, WebSocket
-- **Bypass de Autenticação**: Headers customizados, IP spoofing
-- **Payloads por Tecnologia**: WordPress, Laravel, Django, Node.js, etc.
+### 🎯 Advanced Fuzzing
+- **Admin Panels**: 50+ common paths
+- **Sensitive Files**: .env, configs, backups, logs
+- **API Endpoints**: REST, GraphQL, SOAP, WebSocket
+- **Authentication Bypass**: Custom headers, IP spoofing
+- **Technology Payloads**: WordPress, Laravel, Django, Node.js, etc.
 
-### 🛡️ Detecção de Vulnerabilidades
-- **Injeções**: SQL, XSS, LFI, RFI, RCE, SSTI, XXE
-- **Exposição de Dados**: Credenciais, debug info, paths
-- **Configurações**: CORS, CSP, Headers de segurança
-- **Tecnologias Específicas**: WordPress, Drupal, Joomla, Laravel
-- **Análise de Contexto**: Confidence scoring, risk assessment
+### 🛡️ Vulnerability Detection
+- **Injections**: SQL, XSS, LFI, RFI, RCE, SSTI, XXE
+- **Data Exposure**: Credentials, debug info, paths
+- **Configurations**: CORS, CSP, Security headers
+- **Technology-Specific**: WordPress, Drupal, Joomla, Laravel
+- **Context Analysis**: Confidence scoring, risk assessment
 
-### 📊 Relatórios Profissionais
-- **HTML Interativo**: Gráficos, métricas, drill-down
-- **Sumário Executivo**: Para gestão e tomada de decisão
-- **JSON Estruturado**: Para integração e automação  
-- **CSV Analítico**: Para análise de dados
-- **Visualizações**: Charts.js, gauges, progress bars
+### 📊 Professional Reports
+- **Interactive HTML**: Charts, metrics, drill-down
+- **Executive Summary**: For management and decision making
+- **Structured JSON**: For integration and automation
+- **Analytical CSV**: For data analysis
+- **Visualizations**: Charts.js, gauges, progress bars
 
-## 🏗️ Arquitetura Modular
+## 🏗️ Modular Architecture
 
 ```
 recon_pro_v2/
@@ -85,28 +85,28 @@ recon_pro_v2/
 └── requirements.txt        # Dependencies
 ```
 
-### 📦 Módulos
+### 📦 Modules
 
-| Módulo | Responsabilidade | Principais Classes |
-|--------|------------------|-------------------|
-| `discovery.py` | Descoberta de subdomínios e assets | `AssetDiscovery` |
-| `fuzzer.py` | Fuzzing e testes de penetração | `AdvancedFuzzer` |
-| `vulnerabilities.py` | Detecção e análise de vulnerabilidades | `VulnerabilityEngine` |
-| `reporting.py` | Geração de relatórios profissionais | `AdvancedReporting` |
+| Module | Responsibility | Main Classes |
+|--------|----------------|--------------|
+| `discovery.py` | Subdomain and asset discovery | `AssetDiscovery` |
+| `fuzzer.py` | Fuzzing and penetration testing | `AdvancedFuzzer` |
+| `vulnerabilities.py` | Vulnerability detection and analysis | `VulnerabilityEngine` |
+| `reporting.py` | Professional report generation | `AdvancedReporting` |
 
-## 🔧 Instalação
+## 🔧 Installation
 
-### Pré-requisitos
+### Prerequisites
 - Python 3.8+
 - pip
 - Git
 
-### Dependências Python
+### Python Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### Ferramentas Externas (Opcionais)
+### External Tools (Optional)
 ```bash
 # Subfinder
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
@@ -122,96 +122,96 @@ wget https://github.com/Findomain/Findomain/releases/latest/download/findomain-l
 chmod +x findomain-linux && sudo mv findomain-linux /usr/local/bin/findomain
 ```
 
-## ⚙️ Configuração
+## ⚙️ Configuration
 
-### 1. Arquivo de Configuração
+### 1. Configuration File
 
-Copie e edite o arquivo `config.json`:
+Copy and edit the `config.json` file:
 
 ```bash
 cp config.json my_config.json
 ```
 
-### 2. APIs (Opcionais mas Recomendadas)
+### 2. APIs (Optional but Recommended)
 
-Adicione suas chaves de API em `config.json`:
+Add your API keys in `config.json`:
 
 ```json
 {
   "api_keys": {
-    "SECURITYTRAILS": "sua_api_key_aqui",
-    "SHODAN": "sua_api_key_aqui",
-    "VIRUSTOTAL": "sua_api_key_aqui",
-    "GOOGLE_API_KEY": "sua_api_key_aqui",
-    "GOOGLE_CSE_ID": "seu_cse_id_aqui"
+    "SECURITYTRAILS": "your_api_key_here",
+    "SHODAN": "your_api_key_here",
+    "VIRUSTOTAL": "your_api_key_here",
+    "GOOGLE_API_KEY": "your_api_key_here",
+    "GOOGLE_CSE_ID": "your_cse_id_here"
   }
 }
 ```
 
-### 3. Variáveis de Ambiente (Alternativa)
+### 3. Environment Variables (Alternative)
 
 ```bash
-export SECURITYTRAILS_API_KEY="sua_chave"
-export SHODAN_API_KEY="sua_chave"
-export VIRUSTOTAL_API_KEY="sua_chave"
+export SECURITYTRAILS_API_KEY="your_key"
+export SHODAN_API_KEY="your_key"
+export VIRUSTOTAL_API_KEY="your_key"
 ```
 
-## 🚀 Uso
+## 🚀 Usage
 
-### Uso Básico
+### Basic Usage
 
 ```bash
-# Scan completo padrão
+# Complete default scan
 python recon_pro_v2.py example.com
 
-# Com arquivo de configuração
+# With configuration file
 python recon_pro_v2.py example.com --config my_config.json
 
-# Scan rápido
+# Quick scan
 python recon_pro_v2.py example.com --scan-type quick
 
-# Scan profundo
+# Deep scan
 python recon_pro_v2.py example.com --scan-type deep
 ```
 
-### Opções Avançadas
+### Advanced Options
 
 ```bash
-# Customizar threads e timeout
+# Customize threads and timeout
 python recon_pro_v2.py example.com --threads 30 --verbose
 
-# Diretório de saída específico
+# Specific output directory
 python recon_pro_v2.py example.com --output-dir /path/to/results
 
-# Modo verbose para debugging
+# Verbose mode for debugging
 python recon_pro_v2.py example.com --verbose
 ```
 
-### Parâmetros
+### Parameters
 
-| Parâmetro | Descrição | Padrão |
-|-----------|-----------|---------|
-| `domain` | Domínio alvo (obrigatório) | - |
-| `--config` | Arquivo de configuração JSON | `config.json` |
-| `--scan-type` | Tipo de scan: quick/full/deep | `full` |
-| `--output-dir` | Diretório de saída | `recon_results` |
-| `--threads` | Número de threads | `20` |
-| `--verbose` | Modo debug/verbose | `False` |
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `domain` | Target domain (required) | - |
+| `--config` | JSON configuration file | `config.json` |
+| `--scan-type` | Scan type: quick/full/deep | `full` |
+| `--output-dir` | Output directory | `recon_results` |
+| `--threads` | Number of threads | `20` |
+| `--verbose` | Debug/verbose mode | `False` |
 
-## 💡 Exemplos
+## 💡 Examples
 
-### Exemplo 1: Scan Básico
+### Example 1: Basic Scan
 
 ```bash
 python recon_pro_v2.py tesla.com
 ```
 
-**Saída:**
-- `recon_report_tesla.com_20240101_120000.html` - Relatório principal
-- `recon_data_tesla.com_20240101_120000.json` - Dados estruturados
-- `executive_summary_tesla.com_20240101_120000.html` - Sumário executivo
+**Output:**
+- `recon_report_tesla.com_20240101_120000.html` - Main report
+- `recon_data_tesla.com_20240101_120000.json` - Structured data
+- `executive_summary_tesla.com_20240101_120000.html` - Executive summary
 
-### Exemplo 2: Scan Personalizado
+### Example 2: Custom Scan
 
 ```bash
 python recon_pro_v2.py microsoft.com \
@@ -222,7 +222,7 @@ python recon_pro_v2.py microsoft.com \
   --verbose
 ```
 
-### Exemplo 3: Configuração Específica
+### Example 3: Specific Configuration
 
 ```json
 {
@@ -242,85 +242,85 @@ python recon_pro_v2.py microsoft.com \
 }
 ```
 
-## 📊 Relatórios
+## 📊 Reports
 
-### 📄 Relatório HTML Principal
+### 📄 Main HTML Report
 
-O relatório HTML inclui:
+The HTML report includes:
 
-- **Dashboard Executivo**: Métricas principais e risk score
-- **Subdomínios Descobertos**: Tabela interativa com tecnologias
-- **Achados Sensíveis**: URLs de alto risco com evidências
-- **Vulnerabilidades**: Detalhadas por severidade com remediação
-- **Google Dorks**: Resultados de intelligence gathering
-- **Recomendações**: Priorizadas por impacto
+- **Executive Dashboard**: Key metrics and risk score
+- **Discovered Subdomains**: Interactive table with technologies
+- **Sensitive Findings**: High-risk URLs with evidence
+- **Vulnerabilities**: Detailed by severity with remediation
+- **Google Dorks**: Intelligence gathering results
+- **Recommendations**: Prioritized by impact
 
-### 📈 Visualizações
+### 📈 Visualizations
 
-- **Gráficos de Pizza**: Distribuição de vulnerabilidades
-- **Gráficos de Barras**: Achados por categoria
-- **Gauge de Risco**: Score visual de 0-10
-- **Barras de Tecnologia**: Tecnologias mais encontradas
+- **Pie Charts**: Vulnerability distribution
+- **Bar Charts**: Findings by category
+- **Risk Gauge**: Visual score from 0-10
+- **Technology Bars**: Most found technologies
 
-### 📋 Sumário Executivo
+### 📋 Executive Summary
 
-Versão condensada focada em:
-- Riscos de negócio
-- Impacto financeiro
-- Recomendações estratégicas
-- Timeline de correção
+Condensed version focused on:
+- Business risks
+- Financial impact
+- Strategic recommendations
+- Remediation timeline
 
-## 🔗 APIs Suportadas
+## 🔗 Supported APIs
 
-| API | Funcionalidade | Status | Documentação |
-|-----|----------------|--------|--------------|
-| **SecurityTrails** | Subdomínios + Histórico DNS | ✅ | [Docs](https://docs.securitytrails.com/) |
-| **Shodan** | Hosts + Portas + Banners | ✅ | [Docs](https://developer.shodan.io/) |
-| **VirusTotal** | Subdomínios + Reputação | ✅ | [Docs](https://developers.virustotal.com/) |
-| **Censys** | Certificados + Hosts | ✅ | [Docs](https://search.censys.io/api) |
+| API | Functionality | Status | Documentation |
+|-----|---------------|--------|---------------|
+| **SecurityTrails** | Subdomains + DNS History | ✅ | [Docs](https://docs.securitytrails.com/) |
+| **Shodan** | Hosts + Ports + Banners | ✅ | [Docs](https://developer.shodan.io/) |
+| **VirusTotal** | Subdomains + Reputation | ✅ | [Docs](https://developers.virustotal.com/) |
+| **Censys** | Certificates + Hosts | ✅ | [Docs](https://search.censys.io/api) |
 | **Google CSE** | Search Engine Intelligence | ✅ | [Docs](https://developers.google.com/custom-search) |
 | **Bing Search** | Search Engine Results | ✅ | [Docs](https://docs.microsoft.com/bing-web-search/) |
 
-### 🔑 Obtendo APIs Gratuitas
+### 🔑 Getting Free APIs
 
-1. **SecurityTrails**: 50 queries/mês grátis
-2. **Shodan**: 100 queries/mês grátis  
-3. **VirusTotal**: 1000 requests/dia grátis
-4. **Google CSE**: 100 queries/dia grátis
+1. **SecurityTrails**: 50 queries/month free
+2. **Shodan**: 100 queries/month free  
+3. **VirusTotal**: 1000 requests/day free
+4. **Google CSE**: 100 queries/day free
 
-## 🏆 Comparação de Versões
+## 🏆 Version Comparison
 
-| Característica | v1.0 | v2.0 |
-|----------------|------|------|
-| Arquitetura | Monolítica | Modular |
+| Feature | v1.0 | v2.0 |
+|---------|------|------|
+| Architecture | Monolithic | Modular |
 | APIs | 3 | 6+ |
-| Tipos de Vuln | 7 | 15+ |
-| Relatórios | HTML básico | HTML + JSON + CSV + Executive |
-| Configuração | Hardcoded | JSON flexível |
-| Fuzzing | Básico | Inteligente por tecnologia |
-| Performance | Threading simples | Otimizado + Rate limiting |
-| Detecção Tech | Headers apenas | Headers + Content + Context |
+| Vuln Types | 7 | 15+ |
+| Reports | Basic HTML | HTML + JSON + CSV + Executive |
+| Configuration | Hardcoded | Flexible JSON |
+| Fuzzing | Basic | Intelligent by technology |
+| Performance | Simple threading | Optimized + Rate limiting |
+| Tech Detection | Headers only | Headers + Content + Context |
 
-## 🤝 Contribuição
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Para contribuir:
+Contributions are welcome! To contribute:
 
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### 🛠️ Desenvolvimento
+### 🛠️ Development
 
 ```bash
-# Clone o repositório
-git clone https://github.com/seuusuario/recon-pro-v2.git
+# Clone the repository
+git clone https://github.com/yourusername/recon-pro-v2.git
 
-# Instale dependências de desenvolvimento
+# Install development dependencies
 pip install -r requirements-dev.txt
 
-# Execute testes
+# Run tests
 python -m pytest tests/
 
 # Linting
@@ -329,41 +329,38 @@ flake8 modules/ recon_pro_v2.py
 
 ## ⚖️ Disclaimer
 
-**⚠️ IMPORTANTE**: Este software é destinado EXCLUSIVAMENTE para:
+**⚠️ IMPORTANT**: This software is intended EXCLUSIVELY for:
 
-- ✅ Testes autorizados em sistemas próprios
-- ✅ Pentests com autorização por escrito
+- ✅ Authorized testing on own systems
+- ✅ Pentests with written authorization
 - ✅ Bug bounty programs
-- ✅ Pesquisa de segurança ética
-- ✅ Educação em segurança cibernética
+- ✅ Ethical security research
+- ✅ Cybersecurity education
 
-**❌ NÃO utilize para:**
-- ❌ Ataques não autorizados
-- ❌ Sistemas que não são seus
-- ❌ Atividades ilegais
-- ❌ Violação de termos de serviço
+**❌ DO NOT use for:**
+- ❌ Unauthorized attacks
+- ❌ Systems that are not yours
+- ❌ Illegal activities
+- ❌ Terms of service violations
 
-O autor não se responsabiliza pelo uso indevido desta ferramenta. O usuário é totalmente responsável por garantir que possui autorização adequada antes de executar qualquer teste.
+The author is not responsible for misuse of this tool. The user is fully responsible for ensuring they have proper authorization before executing any tests.
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
 **Pentester Caio | CHDEVSEC**
 
-- 🐙 GitHub: [@seuusuario](https://github.com/seuusuario)
-- 🐦 Twitter: [@seutwitter](https://twitter.com/seutwitter)
-- 💼 LinkedIn: [Seu LinkedIn](https://linkedin.com/in/seuperfil)
-- 📧 Email: seu@email.com
+- 🐙 GitHub: [@CHDEVSEC](https://github.com/CHDevSec)
 
 ---
 
 <div align="center">
 
-**Se esta ferramenta foi útil, considere dar uma ⭐ no repositório!**
+**If this tool was helpful, consider giving it a ⭐ on the repository!**
 
-Made with ❤️ by [Pentester Caio](https://github.com/seuusuario)
+Made with ❤️ by [Pentester Caio](https://github.com/yourusername)
 
-</div> 
+</div>
